@@ -6,7 +6,8 @@
 ##说明
 * 可设置开启或关闭某个状态显示
 * 可设置开机自启动  
-> 以上设置需要以管理员身份运行
+
+>以上设置需要以管理员身份运行
 
 ##参考文献：
 * [How can I find the state of NumLock, CapsLock and ScrollLock in .net?](http://stackoverflow.com/questions/577411/how-can-i-find-the-state-of-numlock-capslock-and-scrolllock-in-net)  
