@@ -29,44 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbShowCapslock = new System.Windows.Forms.CheckBox();
-            this.cbShowNumberLock = new System.Windows.Forms.CheckBox();
+            this.gbSet = new System.Windows.Forms.GroupBox();
             this.cbStartWithSystem = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
+            this.cbShowNumberLock = new System.Windows.Forms.CheckBox();
+            this.cbShowCapslock = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbSet.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbSet
             // 
-            this.groupBox1.Controls.Add(this.cbStartWithSystem);
-            this.groupBox1.Controls.Add(this.cbShowNumberLock);
-            this.groupBox1.Controls.Add(this.cbShowCapslock);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 85);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Set";
-            // 
-            // cbShowCapslock
-            // 
-            this.cbShowCapslock.AutoSize = true;
-            this.cbShowCapslock.Location = new System.Drawing.Point(6, 20);
-            this.cbShowCapslock.Name = "cbShowCapslock";
-            this.cbShowCapslock.Size = new System.Drawing.Size(96, 16);
-            this.cbShowCapslock.TabIndex = 0;
-            this.cbShowCapslock.Text = "ShowCapslock";
-            this.cbShowCapslock.UseVisualStyleBackColor = true;
-            // 
-            // cbShowNumberLock
-            // 
-            this.cbShowNumberLock.AutoSize = true;
-            this.cbShowNumberLock.Location = new System.Drawing.Point(108, 20);
-            this.cbShowNumberLock.Name = "cbShowNumberLock";
-            this.cbShowNumberLock.Size = new System.Drawing.Size(108, 16);
-            this.cbShowNumberLock.TabIndex = 0;
-            this.cbShowNumberLock.Text = "ShowNumberLock";
-            this.cbShowNumberLock.UseVisualStyleBackColor = true;
+            this.gbSet.Controls.Add(this.cbStartWithSystem);
+            this.gbSet.Controls.Add(this.cbShowNumberLock);
+            this.gbSet.Controls.Add(this.cbShowCapslock);
+            this.gbSet.Location = new System.Drawing.Point(12, 12);
+            this.gbSet.Name = "gbSet";
+            this.gbSet.Size = new System.Drawing.Size(242, 63);
+            this.gbSet.TabIndex = 0;
+            this.gbSet.TabStop = false;
+            this.gbSet.Text = "Set";
             // 
             // cbStartWithSystem
             // 
@@ -77,28 +58,61 @@
             this.cbStartWithSystem.TabIndex = 0;
             this.cbStartWithSystem.Text = "StartWithSystem";
             this.cbStartWithSystem.UseVisualStyleBackColor = true;
+            this.cbStartWithSystem.CheckedChanged += new System.EventHandler(this.cbStartWithSystem_CheckedChanged);
+            // 
+            // cbShowNumberLock
+            // 
+            this.cbShowNumberLock.AutoSize = true;
+            this.cbShowNumberLock.Location = new System.Drawing.Point(108, 20);
+            this.cbShowNumberLock.Name = "cbShowNumberLock";
+            this.cbShowNumberLock.Size = new System.Drawing.Size(108, 16);
+            this.cbShowNumberLock.TabIndex = 0;
+            this.cbShowNumberLock.Text = "ShowNumberLock";
+            this.cbShowNumberLock.UseVisualStyleBackColor = true;
+            this.cbShowNumberLock.CheckedChanged += new System.EventHandler(this.cbShowNumberLock_CheckedChanged);
+            // 
+            // cbShowCapslock
+            // 
+            this.cbShowCapslock.AutoSize = true;
+            this.cbShowCapslock.Location = new System.Drawing.Point(6, 20);
+            this.cbShowCapslock.Name = "cbShowCapslock";
+            this.cbShowCapslock.Size = new System.Drawing.Size(96, 16);
+            this.cbShowCapslock.TabIndex = 0;
+            this.cbShowCapslock.Text = "ShowCapslock";
+            this.cbShowCapslock.UseVisualStyleBackColor = true;
+            this.cbShowCapslock.CheckedChanged += new System.EventHandler(this.cbShowCapslock_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(14, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(224, 30);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "查看/更改设置需要以管理员身份运行；以上为默认设置。";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 109);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(266, 118);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.gbSet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "KeyboradStatus";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbSet.ResumeLayout(false);
+            this.gbSet.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbSet;
         private System.Windows.Forms.CheckBox cbStartWithSystem;
         private System.Windows.Forms.CheckBox cbShowNumberLock;
         private System.Windows.Forms.CheckBox cbShowCapslock;
+        private System.Windows.Forms.Label label1;
     }
 }

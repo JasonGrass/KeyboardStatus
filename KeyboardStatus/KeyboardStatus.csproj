@@ -38,6 +38,9 @@
     <Reference Include="AdrHook">
       <HintPath>..\..\..\..\AdrHookDemo\AdrHookDemo\AdrHookDemo\bin\Debug\AdrHook.dll</HintPath>
     </Reference>
+    <Reference Include="Grass.Windows">
+      <HintPath>..\..\GrassLib\Grass.Windows\bin\Release\Grass.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeyStatus.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -57,8 +66,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OptionSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

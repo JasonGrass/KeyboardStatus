@@ -8,6 +8,7 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using KeyboardStatus.Properties;
+using Microsoft.Win32;
 
 namespace KeyboardStatus
 {
@@ -16,10 +17,10 @@ namespace KeyboardStatus
 
         private bool showCapsLockIcon = true;
         private bool showNumberLockIcon = true;
+        private bool startWithSys = false;
 
         private NotifyIcon notifyCaps;
         private NotifyIcon notifyNum;
-        //private NotifyIcon notifySet;
 
         public MainForm()
         {
@@ -42,6 +43,12 @@ namespace KeyboardStatus
             this.Shown += (sender, args) =>
             {
                 this.Hide();
+                OptionSet.Option.ReadOption(out showCapsLockIcon, out showNumberLockIcon, out startWithSys);
+                cbShowCapslock.Checked = showCapsLockIcon;
+                cbShowNumberLock.Checked = showNumberLockIcon;
+                cbStartWithSystem.Checked = startWithSys;
+
+                gbSet.Enabled = OptionSet.IsAdministrator();
             };
 
             this.Closing += (sender, args) =>
@@ -105,8 +112,8 @@ namespace KeyboardStatus
         {
             if (mouseEventArgs.Button == MouseButtons.Left)
             {
-                this.WindowState = FormWindowState.Normal;
                 this.Show();
+                this.WindowState = FormWindowState.Normal;              
             }
         }
 
@@ -121,13 +128,14 @@ namespace KeyboardStatus
 
         private void OnNotifyIconOptionClick(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
             this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void OnNotifyIconAboutClick(object sender, EventArgs eventArgs)
         {
-            
+            FormAbout about = new FormAbout();
+            about.ShowDialog();
         }
 
         public void SetCapslockStatus(bool init = false)
@@ -150,14 +158,24 @@ namespace KeyboardStatus
             notifyNum.Visible = showNumberLockIcon;
         }
 
-        private void GetOption()
+        private void cbStartWithSystem_CheckedChanged(object sender, EventArgs e)
         {
-            
+            startWithSys = cbStartWithSystem.Checked;
+            OptionSet.Option.SaveStartWithSysOption(startWithSys);
         }
 
-        private void SetOption(bool showCapsLock, bool showNumberLock)
+        private void cbShowCapslock_CheckedChanged(object sender, EventArgs e)
         {
-            
+            showCapsLockIcon = cbShowCapslock.Checked;
+            OptionSet.Option.SaveCapslockOption(showCapsLockIcon);
+            SetCapslockStatus(true);
+        }
+
+        private void cbShowNumberLock_CheckedChanged(object sender, EventArgs e)
+        {
+            showNumberLockIcon = cbShowNumberLock.Checked;
+            OptionSet.Option.SaveNumlockOption(showNumberLockIcon);
+            SetNumberLockStatus(true);
         }
     }
 }
