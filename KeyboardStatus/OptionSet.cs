@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
@@ -13,7 +12,7 @@ namespace KeyboardStatus
     {
         private static Register Register;
 
-        private static Register.RegDomain RegDomain = Register.RegDomain.LocalMachine;
+        private static Register.RegDomain _regDomain = Register.RegDomain.LocalMachine;
 
         private static string SubKey = @"SOFTWARE\KeyboradStatus";
         private static string SubKeyRun = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
@@ -25,7 +24,7 @@ namespace KeyboardStatus
 
         private OptionSet()
         {
-            Register = new Register(SubKey, RegDomain);
+            Register = new Register(SubKey, _regDomain);
         }
 
         private static volatile OptionSet option;

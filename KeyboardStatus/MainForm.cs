@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using KeyboardStatus.Properties;
 using Microsoft.Win32;
+using AdrHook;
 
 namespace KeyboardStatus
 {
@@ -68,7 +68,7 @@ namespace KeyboardStatus
 
         private void InitNotifyIcon()
         {
-            AdrHook.HookManager.KeyDown += HookManagerOnKeyDown;
+            HookManager.KeyDown += HookManagerOnKeyDown;
 
             if (showCapsLockIcon)
             {
