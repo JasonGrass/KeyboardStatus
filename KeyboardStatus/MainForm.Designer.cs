@@ -34,6 +34,7 @@
             this.cbShowNumberLock = new System.Windows.Forms.CheckBox();
             this.cbShowCapslock = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelTip = new System.Windows.Forms.Label();
             this.gbSet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,17 +85,28 @@
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(14, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(224, 30);
+            this.label1.Size = new System.Drawing.Size(215, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "查看/更改设置需要以管理员身份运行；以上为默认设置。";
+            this.label1.Text = "查看/更改设置需要以管理员身份运行；";
+            // 
+            // labelTip
+            // 
+            this.labelTip.AutoSize = true;
+            this.labelTip.Location = new System.Drawing.Point(14, 102);
+            this.labelTip.Name = "labelTip";
+            this.labelTip.Size = new System.Drawing.Size(101, 12);
+            this.labelTip.TabIndex = 1;
+            this.labelTip.Text = "以上为默认设置。";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 118);
+            this.ClientSize = new System.Drawing.Size(266, 131);
+            this.Controls.Add(this.labelTip);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gbSet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -104,6 +116,7 @@
             this.gbSet.ResumeLayout(false);
             this.gbSet.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -114,5 +127,6 @@
         private System.Windows.Forms.CheckBox cbShowNumberLock;
         private System.Windows.Forms.CheckBox cbShowCapslock;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTip;
     }
 }

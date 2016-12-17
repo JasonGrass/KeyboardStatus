@@ -49,6 +49,14 @@ namespace KeyboardStatus
                 cbStartWithSystem.Checked = startWithSys;
 
                 gbSet.Enabled = OptionSet.IsAdministrator();
+                if (gbSet.Enabled)
+                {
+                    labelTip.Text = "以上为当前设置；";
+                }
+                else
+                {
+                    labelTip.Text = "以上为默认设置；";
+                }
             };
 
             this.Closing += (sender, args) =>
