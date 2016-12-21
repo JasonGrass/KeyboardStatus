@@ -36,12 +36,13 @@
     <ApplicationIcon>solar_system_72px_1206602_easyicon.net.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdrHook">
-      <HintPath>C:\Users\Jason\Desktop\AdrHookDemo\AdrHook\bin\Release\AdrHook.dll</HintPath>
+    <Reference Include="AdrHook, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\releaseExe\AdrHook.dll</HintPath>
     </Reference>
     <Reference Include="Grass.Windows, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Github.oschina\GrassLib\Grass.Windows\bin\Debug\Grass.Windows.dll</HintPath>
+      <HintPath>..\releaseExe\Grass.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

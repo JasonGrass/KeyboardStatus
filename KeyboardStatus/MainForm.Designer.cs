@@ -35,6 +35,7 @@
             this.cbShowCapslock = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelTip = new System.Windows.Forms.Label();
+            this.btnOpenFileDir = new System.Windows.Forms.Button();
             this.gbSet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.gbSet.Size = new System.Drawing.Size(242, 63);
             this.gbSet.TabIndex = 0;
             this.gbSet.TabStop = false;
-            this.gbSet.Text = "Set";
+            this.gbSet.Text = "设置";
             // 
             // cbStartWithSystem
             // 
@@ -66,9 +67,9 @@
             this.cbShowNumberLock.AutoSize = true;
             this.cbShowNumberLock.Location = new System.Drawing.Point(108, 20);
             this.cbShowNumberLock.Name = "cbShowNumberLock";
-            this.cbShowNumberLock.Size = new System.Drawing.Size(108, 16);
+            this.cbShowNumberLock.Size = new System.Drawing.Size(66, 16);
             this.cbShowNumberLock.TabIndex = 0;
-            this.cbShowNumberLock.Text = "ShowNumberLock";
+            this.cbShowNumberLock.Text = "NumLock";
             this.cbShowNumberLock.UseVisualStyleBackColor = true;
             this.cbShowNumberLock.CheckedChanged += new System.EventHandler(this.cbShowNumberLock_CheckedChanged);
             // 
@@ -77,9 +78,9 @@
             this.cbShowCapslock.AutoSize = true;
             this.cbShowCapslock.Location = new System.Drawing.Point(6, 20);
             this.cbShowCapslock.Name = "cbShowCapslock";
-            this.cbShowCapslock.Size = new System.Drawing.Size(96, 16);
+            this.cbShowCapslock.Size = new System.Drawing.Size(72, 16);
             this.cbShowCapslock.TabIndex = 0;
-            this.cbShowCapslock.Text = "ShowCapslock";
+            this.cbShowCapslock.Text = "Capslock";
             this.cbShowCapslock.UseVisualStyleBackColor = true;
             this.cbShowCapslock.CheckedChanged += new System.EventHandler(this.cbShowCapslock_CheckedChanged);
             // 
@@ -101,11 +102,22 @@
             this.labelTip.TabIndex = 1;
             this.labelTip.Text = "以上为默认设置。";
             // 
+            // btnOpenFileDir
+            // 
+            this.btnOpenFileDir.Location = new System.Drawing.Point(138, 121);
+            this.btnOpenFileDir.Name = "btnOpenFileDir";
+            this.btnOpenFileDir.Size = new System.Drawing.Size(116, 23);
+            this.btnOpenFileDir.TabIndex = 2;
+            this.btnOpenFileDir.Text = "打开文件所在目录";
+            this.btnOpenFileDir.UseVisualStyleBackColor = true;
+            this.btnOpenFileDir.Click += new System.EventHandler(this.btnOpenFileDir_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 131);
+            this.ClientSize = new System.Drawing.Size(266, 156);
+            this.Controls.Add(this.btnOpenFileDir);
             this.Controls.Add(this.labelTip);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gbSet);
@@ -128,5 +140,6 @@
         private System.Windows.Forms.CheckBox cbShowCapslock;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelTip;
+        private System.Windows.Forms.Button btnOpenFileDir;
     }
 }

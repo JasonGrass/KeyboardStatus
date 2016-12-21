@@ -31,15 +31,11 @@ namespace KeyboardStatus
 
         private void InitForm()
         {
-            this.ShowInTaskbar = false;
+            //this.ShowInTaskbar = false;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
-            this.Load += (sender, args) =>
-            {
-                this.WindowState = FormWindowState.Minimized;
-            };
             this.Shown += (sender, args) =>
             {
                 this.Hide();
@@ -105,15 +101,18 @@ namespace KeyboardStatus
             EventHandler handlerOption = OnNotifyIconOptionClick;
             EventHandler handlerExit = OnNotifyIconExitClick;
 
-            ContextMenuStrip notifyMenu = new ContextMenuStrip();
-            notifyMenu.Items.Add(new ToolStripButton("About   ", null, handlerAbout));
-            notifyMenu.Items.Add(new ToolStripButton("Option  ", null, handlerOption));
-            notifyMenu.Items.Add(new ToolStripButton("Exit    ", null, handlerExit));
+            ContextMenu notifyMenu = new ContextMenu();
+            MenuItem itemOption = new MenuItem("Option", handlerOption);
+            MenuItem itemAbout = new MenuItem("About", handlerAbout);
+            MenuItem itemExit = new MenuItem("Exit", handlerExit);
+            notifyMenu.MenuItems.AddRange(new[] { itemOption, itemAbout, itemExit });
 
-            notifyCaps.ContextMenuStrip = notifyMenu;
+            notifyCaps.ContextMenu = notifyMenu;
+            notifyNum.ContextMenu = notifyMenu;
+           
             notifyCaps.MouseDoubleClick += NotifySetOnMouseClick;
-            notifyNum.ContextMenuStrip = notifyMenu;
             notifyNum.MouseDoubleClick += NotifySetOnMouseClick;
+
         }
 
         private void NotifySetOnMouseClick(object sender, MouseEventArgs mouseEventArgs)
@@ -184,6 +183,11 @@ namespace KeyboardStatus
             showNumberLockIcon = cbShowNumberLock.Checked;
             OptionSet.Option.SaveNumlockOption(showNumberLockIcon);
             SetNumberLockStatus(true);
+        }
+
+        private void btnOpenFileDir_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("Explorer.exe", Application.ExecutablePath);
         }
     }
 }
