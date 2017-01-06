@@ -5,6 +5,9 @@ using System.Text;
 
 namespace KeyboardStatus
 {
+    /// <summary>
+    /// 通过windows API 获取键盘状态
+    /// </summary>
     class KeyStatus
     {
         /// <summary>

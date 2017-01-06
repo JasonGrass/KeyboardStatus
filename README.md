@@ -14,4 +14,5 @@
 
 ##参考文献：
 * [How can I find the state of NumLock, CapsLock and ScrollLock in .net?](http://stackoverflow.com/questions/577411/how-can-i-find-the-state-of-numlock-capslock-and-scrolllock-in-net)  
-* [C# 全局键盘监视（全局键盘钩子）](http://www.wxzzz.com/215.html)
+* [C# 全局键盘监视（全局键盘钩子）](http://www.wxzzz.com/215.html)  
+* [创建一个不显示窗口的程序](http://ly4cn.cnblogs.com/archive/2006/03/16/351205.html?Pending=true#Post)  

@@ -58,6 +58,12 @@
     <Compile Include="FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="HideForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HideForm.Designer.cs">
+      <DependentUpon>HideForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeyStatus.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -65,7 +71,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotifyIconManager.cs" />
     <Compile Include="OptionSet.cs" />
+    <Compile Include="Param.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAbout.resx">

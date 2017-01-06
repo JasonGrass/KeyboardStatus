@@ -14,19 +14,11 @@ namespace KeyboardStatus
 {
     public partial class MainForm : Form
     {
-
-        private bool showCapsLockIcon = true;
-        private bool showNumberLockIcon = true;
-        private bool startWithSys = false;
-
-        private NotifyIcon notifyCaps;
-        private NotifyIcon notifyNum;
-
+        
         public MainForm()
         {
             InitializeComponent();
             InitForm();
-            InitNotifyIcon();
         }
 
         private void InitForm()
@@ -38,11 +30,9 @@ namespace KeyboardStatus
 
             this.Shown += (sender, args) =>
             {
-                this.Hide();
-                OptionSet.Option.ReadOption(out showCapsLockIcon, out showNumberLockIcon, out startWithSys);
-                cbShowCapslock.Checked = showCapsLockIcon;
-                cbShowNumberLock.Checked = showNumberLockIcon;
-                cbStartWithSystem.Checked = startWithSys;
+                cbShowCapslock.Checked = Param.ShowCapsLockIcon;
+                cbShowNumberLock.Checked = Param.ShowNumberLockIcon;
+                cbStartWithSystem.Checked = Param.StartWithSys;
 
                 gbSet.Enabled = OptionSet.IsAdministrator();
                 if (gbSet.Enabled)
@@ -62,127 +52,24 @@ namespace KeyboardStatus
             };
         }
 
-        private void InitNotifyIcon()
-        {
-            HookManager.KeyDown += HookManagerOnKeyDown;
-
-            if (showCapsLockIcon)
-            {
-                notifyCaps = new NotifyIcon();
-                SetCapslockStatus(true);
-            }
-
-            if (showNumberLockIcon)
-            {
-                notifyNum = new NotifyIcon();
-                SetNumberLockStatus(true);
-            }
-
-            SetNotifyIcon();
-
-        }
-
-        private void HookManagerOnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.CapsLock)
-            {
-                SetCapslockStatus();
-            }
-            else if (e.KeyCode == Keys.NumLock)
-            {
-                SetNumberLockStatus();
-            }
-        }
-
-        private void SetNotifyIcon()
-        {
-       
-            EventHandler handlerAbout = OnNotifyIconAboutClick;
-            EventHandler handlerOption = OnNotifyIconOptionClick;
-            EventHandler handlerExit = OnNotifyIconExitClick;
-
-            ContextMenu notifyMenu = new ContextMenu();
-            MenuItem itemOption = new MenuItem("Option", handlerOption);
-            MenuItem itemAbout = new MenuItem("About", handlerAbout);
-            MenuItem itemExit = new MenuItem("Exit", handlerExit);
-            notifyMenu.MenuItems.AddRange(new[] { itemOption, itemAbout, itemExit });
-
-            notifyCaps.ContextMenu = notifyMenu;
-            notifyNum.ContextMenu = notifyMenu;
-           
-            notifyCaps.MouseDoubleClick += NotifySetOnMouseClick;
-            notifyNum.MouseDoubleClick += NotifySetOnMouseClick;
-
-        }
-
-        private void NotifySetOnMouseClick(object sender, MouseEventArgs mouseEventArgs)
-        {
-            if (mouseEventArgs.Button == MouseButtons.Left)
-            {
-                this.Show();
-                this.WindowState = FormWindowState.Normal;              
-            }
-        }
-
-        private void OnNotifyIconExitClick(object sender, EventArgs e)
-        {
-            notifyCaps.Visible = false;
-            notifyNum.Visible = false;
-            this.Close();
-            this.Dispose();
-            Application.Exit();
-        }
-
-        private void OnNotifyIconOptionClick(object sender, EventArgs e)
-        {
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
-        }
-
-        private void OnNotifyIconAboutClick(object sender, EventArgs eventArgs)
-        {
-            FormAbout about = new FormAbout();
-            about.ShowDialog();
-        }
-
-        public void SetCapslockStatus(bool init = false)
-        {
-            bool status = init ? KeyStatus.CapsLockStatus : !KeyStatus.CapsLockStatus;
-            Icon notifyIcon = status ? 
-                Resources.A_16px_1168287_easyicon_net : 
-                Resources.a_lowercase_16px_1168286_easyicon_net;
-            notifyCaps.Icon = notifyIcon;
-            notifyCaps.Visible = showCapsLockIcon;
-        }
-
-        public void SetNumberLockStatus(bool init = false)
-        {
-            bool status = init ? KeyStatus.NumLockStatus : !KeyStatus.NumLockStatus;
-            Icon notifyIcon = status ?
-                Resources._5_16px_1168277_easyicon_net :
-                Resources._4_direction_16px_1074524_easyicon_net;
-            notifyNum.Icon = notifyIcon;
-            notifyNum.Visible = showNumberLockIcon;
-        }
-
         private void cbStartWithSystem_CheckedChanged(object sender, EventArgs e)
         {
-            startWithSys = cbStartWithSystem.Checked;
-            OptionSet.Option.SaveStartWithSysOption(startWithSys);
+            Param.StartWithSys = cbStartWithSystem.Checked;
+            OptionSet.Option.SaveStartWithSysOption(Param.StartWithSys);
         }
 
         private void cbShowCapslock_CheckedChanged(object sender, EventArgs e)
         {
-            showCapsLockIcon = cbShowCapslock.Checked;
-            OptionSet.Option.SaveCapslockOption(showCapsLockIcon);
-            SetCapslockStatus(true);
+            Param.ShowCapsLockIcon = cbShowCapslock.Checked;
+            OptionSet.Option.SaveCapslockOption(Param.ShowCapsLockIcon);
+            NotifyIconManager.SetCapslockStatus(true);
         }
 
         private void cbShowNumberLock_CheckedChanged(object sender, EventArgs e)
         {
-            showNumberLockIcon = cbShowNumberLock.Checked;
-            OptionSet.Option.SaveNumlockOption(showNumberLockIcon);
-            SetNumberLockStatus(true);
+            Param.ShowNumberLockIcon = cbShowNumberLock.Checked;
+            OptionSet.Option.SaveNumlockOption(Param.ShowNumberLockIcon);
+            NotifyIconManager.SetNumberLockStatus(true);
         }
 
         private void btnOpenFileDir_Click(object sender, EventArgs e)

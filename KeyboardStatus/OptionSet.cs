@@ -8,6 +8,10 @@ using Microsoft.Win32;
 
 namespace KeyboardStatus
 {
+    /// <summary>
+    /// 参数设置
+    /// 用于跟注册表打交道，读取或写入参数
+    /// </summary>
     class OptionSet
     {
         private static Register Register;
@@ -37,6 +41,7 @@ namespace KeyboardStatus
         {
             if (!IsAdministrator())
             {
+                // 默认设置
                 capslock = true;
                 numlock = true;
                 startWithSys = false;
